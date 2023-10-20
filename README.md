@@ -1,2 +1,4 @@
-# zuul-with-enums-v2
- - super text adventure - possibility is INFINITY!!!
+This is the features branch
+
+Assignment requirements will be made here then merged once 
+completed
