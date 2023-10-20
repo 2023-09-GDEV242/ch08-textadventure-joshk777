@@ -86,9 +86,10 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+        System.out.println("\nYour command words are:");
+        parser.showCommands();
     }
 
     /**
@@ -141,8 +142,7 @@ public class Game
     {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("\nYour command words are:");
         parser.showCommands();
     }
 
@@ -164,11 +164,15 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("\nThere is no door!");
+            System.out.println("\nYour command words are:");
+            parser.showCommands();
         }
         else {
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            System.out.println("\n" + currentRoom.getLongDescription());
+            System.out.println("\nYour command words are:");
+            parser.showCommands();
         }
     }
 
@@ -194,7 +198,9 @@ public class Game
      */
     private void look()
     {
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println("\n" + currentRoom.getLongDescription());
+        System.out.println("\nYour command words are:");
+        parser.showCommands();
     }
     
     /**
@@ -203,6 +209,8 @@ public class Game
      */
     private void eat()
     {
-        System.out.println("You have eaten. You now have a re-newed sense of purpose");
+        System.out.println("\nYou have eaten. You now have a re-newed sense of purpose.");
+        System.out.println("\nYour command words are:");
+        parser.showCommands();
     }
 }
