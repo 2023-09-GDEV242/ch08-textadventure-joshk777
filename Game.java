@@ -118,6 +118,10 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
         }
         return wantToQuit;
     }
@@ -178,5 +182,14 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    /**
+     * Look re=prints the current location of the user
+     * and the available exits
+     */
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
     }
 }
