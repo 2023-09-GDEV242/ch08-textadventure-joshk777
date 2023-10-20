@@ -122,6 +122,10 @@ public class Game
             case LOOK:
                 look();
                 break;
+                
+            case EAT:
+                eat();
+                break;
         }
         return wantToQuit;
     }
@@ -191,5 +195,14 @@ public class Game
     private void look()
     {
         System.out.println(currentRoom.getLongDescription());
+    }
+    
+    /**
+     * Eat replnishes the players hunger 
+     * 
+     */
+    private void eat()
+    {
+        System.out.println("You have eaten. You now have a re-newed sense of purpose");
     }
 }
