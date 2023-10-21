@@ -1,7 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -12,25 +12,32 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Joshua Klenk
+ * @version 10.21.23
  */
 
 public class Room 
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private ArrayList<Item> roomItems;
+    
+    
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
+     * 
+     * Creates an item that is contained in the room
+     * 
      * @param description The room's description.
+     * @param item The item inside of the room;
      */
     public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<>();
+        roomItems = new ArrayList<Item>();
     }
 
     /**
@@ -43,6 +50,32 @@ public class Room
         exits.put(direction, neighbor);
     }
 
+    /**
+     * Returns a string representation of the items in a given room
+     * 
+     * @return returnItems The concatonated string of the room items. 
+     */
+    public String getRoomItems()
+    {
+        String returnItems = "Items in the room: \n";
+        for(Item item : roomItems)
+        {
+            returnItems += item.getItemInfo() + "\n";
+        }
+        return returnItems;
+    }
+    
+    /**
+     * Adds an item and holds the name and weight of the item.
+     * 
+     * @param weight - the weight of an item.
+     * @param name - the name of an object.
+     */
+    public void addItem(Item item)
+    {
+        roomItems.add(item);
+    }
+    
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
@@ -60,7 +93,8 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + 
+                getRoomItems() + "\n" + getExitString();
     }
 
     /**
