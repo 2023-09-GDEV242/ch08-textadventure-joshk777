@@ -42,17 +42,68 @@ public class Game
     
         //create items to put in the rooms
         Item outsideItem[] = {new Item("A rouge turtle to keep as a companion.", 2),
-                                new Item("A fully grown succulent",1)};
+                                new Item("A fully grown succulent",1),
+                                    new Item("A whimsical duck wearing a top hat.", 12)};
         
         Item theaterItem[] = {new Item("A mask to hide ones identity", 1)};
         
-        Item pubItem[] = {new Item("A half eaten sandwitch", 2)};
+        Item pubItem[] = {new Item("A half eaten sandwich", 2),
+                            new Item("A full pint of butterbeer",1),
+                                new Item("A wheel of cheese",4)};
         
         Item labItem[] = {new Item("A skelton key",1),
-                            new Item("Med Pack", 12)};
+                            new Item("Med Pack", 12),
+                                new Item("Misc. cables",2)};
         
         Item officeItem[] = {new Item("A golden stapler",5), 
                                 new Item("A laptop", 25)};
+        
+        Item basementItem[] = {new Item("A frayed piece of rope",1),
+                                new Item("A bucket filled with a mysterious liquid", 3)};
+        
+        Item cavernItem[] = {new Item("Pile of rocks", 5),
+                                new Item("Empty beer can",1),
+                                    new Item("Assortment of bones",45)};
+        
+        Item dungeonItem [] = {new Item("A dull sword",18),
+                                new Item("Small elixir vial",2)};
+        
+        Item libraryItem[] = {new Item("The Fulcrum",3),
+                                new Item("A monocle",1)};
+        
+        Item observatoryItem[] = {new Item("Telescope",600),
+                                    new Item("Copy of Astronomy for Dummies", 4),
+                                        new Item("Telescope lenses",2)};
+        
+        Item parkItem[] = {new Item("A bumpy TOAD!!!!!",1),
+                                new Item("Bench",500),};
+        
+        Item infirmaryItem[] = {new Item("Needles",1),
+                                    new Item("Bandages",1)};
+        
+        Item gymItem[] = {new Item("Dumbbell",10),
+                            new Item("Sweat rag", 1),
+                                new Item("Weight plate",45)};
+        
+        Item lockerRoomItem[] = {new Item("Soggy towel",1),
+                                    new Item("Dirty socks",1)};
+        
+        Item boatHouseItem[] = {new Item("Oar",5)};
+        
+        Item greenHouseItem[] = {new Item("Shears",3),
+                                    new Item("Cracked watering can",2),
+                                        new Item("Fertilizer",5)};
+      
+        Item clockTowerItem[] = {new Item("Bolts",3),
+                                    new Item("Black cat companion",8),
+                                        new Item("Cape",1)};
+        
+        Item entranceHallItem[] = {new Item("Welcome pamphelt",1),
+                                    new Item("Pen", 1)};
+        
+        Item librarySecondFloorItem[] = {new Item("Candle",2),
+                                            new Item("Matches",1),
+                                                new Item("Robe",1)};
         
         // create the rooms
         outside = new Room("outside in the court yard you see the main entrance of the university." 
