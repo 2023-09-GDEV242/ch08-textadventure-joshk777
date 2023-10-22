@@ -112,7 +112,7 @@ public class Game
                             + "\nTo your West you see a colossal clock tower"
                             + "\nTo your south you see the Universities gym.");
                             
-        theater = new Room("in the bustling campus theater there is a screening of Night of the Living Dead"
+        theater = new Room("in the bustling campus theater. There is a screening of Night of the Living Dead"
                             + "\nEveryone is dressed in their best zombie outfits."
                             +" \nThrough the North window you spot the local pub from the the orange hue in the distance."); 
                             
@@ -138,11 +138,11 @@ public class Game
                             + "\nDo you continue down further or retreat back up?");
                             
         dungeon = new Room("entering what appears to be a dungeon. Scanning around the room you hear a loud crash."
-                            + "\n From one of the cells a Troll appears and begins to charge you."
-                            + "\n You are done exploring. You must retreat back the way you came.");
+                            + "\nFrom one of the cells a Troll appears and begins to charge you."
+                            + "\nYou are done exploring. You must retreat back the way you came.");
                             
         library = new Room("in the campus libray. The crisp smell of parchment is in the air." 
-                            + "\nTo the left you see a sprial stair case leading to the second floor"
+                            + "\nTo the left you see a sprial staircase leading to the second floor"
                             + "\nDo you go upstairs?");
                              
         librarySecondFloor = new Room("entering the second floor. Looking around you see solid oak desks."
@@ -152,7 +152,7 @@ public class Game
         observatory = new Room("in the astronomy tower."
                                 + "\nStudents are looking through the telescope hoping to catch a glimpse of Saturn"
                                 + " and it's rings tonight."
-                                + "\nThere is a stair case that leads to a lower level" 
+                                + "\nThere is a staircase that leads to a lower level" 
                                 + "\nDo you go down or go back the way you came?");
         
         park = new Room("in the park now, standing between the Greenhouse to your North, and the pub to your South"
@@ -160,12 +160,12 @@ public class Game
         
         infirmary = new Room("in the infirmary." 
                              + "*Luckily its a quiet night here* you think to yourself as the nurse greets you"
-                             + "They ask if you need any medical assistance."
+                             + ". They ask if you need any medical assistance."
                              + "\nTo the North exit is a passage leading to the theater");
         
         gym = new Room("entering the gym, You hear clanking of weights and friendly comraderie of the gym goers."
                         +"\nOn the opposite side of the room is the locker room"
-                        + " do you enter or go back North to the main grounds?");
+                        + "\nDo you enter or go back North to the main grounds?");
         
         lockerRoom = new Room("entering the locker room. Lockers line the wall; a thick smell of must is in the air"
                                 + "\nYou contemplate why you came in here."
@@ -176,7 +176,7 @@ public class Game
                                 + " on the very same boat.");
         
         greenHouse = new Room("inside the green house. It is a bontanical wonderland." 
-                            + "You are surrounded by all sorts of flora;"
+                            + " You are surrounded by all sorts of flora;"
                             + " the sweet smell of roses and lavender fills the air.");
                                 
         clockTower = new Room("in the clock tower. Chimes from the hour rolling over ring through your head."
@@ -228,6 +228,7 @@ public class Game
         
         greenHouse.setExit("south", park);
         greenHouse.setExit("east", boatHouse);
+        greenHouse.setExit("west", entranceHall);
         
         boatHouse.setExit("west", greenHouse);
         
