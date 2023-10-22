@@ -195,6 +195,20 @@ public class Game
         pub = addRoomItem(pub, pubItem);
         lab = addRoomItem(lab, labItem);
         office = addRoomItem(office, officeItem);
+        basement = addRoomItem(basement, basementItem);
+        cavern = addRoomItem(cavern, cavernItem);
+        dungeon = addRoomItem(dungeon, dungeonItem); 
+        library = addRoomItem(library, libraryItem);
+        observatory = addRoomItem(observatory, observatoryItem);
+        park = addRoomItem(park, parkItem);
+        infirmary = addRoomItem(infirmary, infirmaryItem);
+        gym = addRoomItem(gym, gymItem);
+        lockerRoom = addRoomItem(lockerRoom, lockerRoomItem);
+        boatHouse = addRoomItem(boatHouse, boatHouseItem);
+        greenHouse = addRoomItem(greenHouse, greenHouseItem);
+        clockTower = addRoomItem(clockTower, clockTowerItem);
+        entranceHall = addRoomItem(entranceHall, entranceHallItem);
+        librarySecondFloor = addRoomItem(librarySecondFloor, librarySecondFloorItem);
         
         
         // initialise room exits
