@@ -1,3 +1,5 @@
+import java.time.Instant;
+import java.time.Duration;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -19,7 +21,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private int timeLimit;
+    
     /**
      * Create the game and initialise its internal map.
      */
@@ -32,13 +35,15 @@ public class Game
     /**
      * Create all the rooms and link their exits together.
      * 
-     * Add an item to each room
+     * Add an item to each room by inserting specified items into
+     * an array then loading them into an ArrayList to be applied to
+     * each room.
      */
     private void createRooms()
     {
         Room outside, theater, pub, lab, office, basement, cavern, dungeon, library,
             observatory,park,infirmary, gym, lockerRoom, boatHouse, greenHouse, clockTower,
-            entranceHall, librarySecondFloor;
+            entranceHall, librarySecondFloor, trapDoor;
     
         //create items to put in the rooms
         Item outsideItem[] = {new Item("A rouge turtle to keep as a companion.", 2),
@@ -139,7 +144,8 @@ public class Game
                             
         dungeon = new Room("entering what appears to be a dungeon. Scanning around the room you hear a loud crash."
                             + "\nFrom one of the cells a Troll appears and begins to charge you."
-                            + "\nYou are done exploring. You must retreat back the way you came.");
+                            + "\nOff in the distance you spot what appears to be another door."
+                            + "\nDo you go back the way you cam or head for the door?");
                             
         library = new Room("in the campus libray. The crisp smell of parchment is in the air." 
                             + "\nTo the left you see a sprial staircase leading to the second floor"
@@ -188,6 +194,10 @@ public class Game
                                 + "To the north is the library." 
                                 + "To the east you see a glowing green house."
                                 + "To the west lies the observatory.");
+                                
+        trapDoor = new Room(" entering the door in the distance." 
+                                + "\nThe door slams shut behind you."
+                                + "\nThere is no handle to exit.");
         
         //add the array of items to the rooms
         outside = addRoomItem(outside, outsideItem);
@@ -249,6 +259,7 @@ public class Game
         cavern.setExit("down", dungeon);
         
         dungeon.setExit("up", cavern);
+        dungeon.setExit("north", trapDoor);
         
         gym.setExit("north", outside);
         gym.setExit("east", infirmary);
@@ -272,21 +283,41 @@ public class Game
         
         currentRoom = outside;  // start game outside
     }
+    
 
     /**
-     *  Main play routine.  Loops until end of play.
+     *  Main play routine.  
+     *  Loops until end of play or the time limit has been reached.
      */
     public void play() 
     {            
         printWelcome();
-
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
                 
+        Instant startTime = Instant.now();
+        int timeLimitSeconds = 1800;
+        
         boolean finished = false;
-        while (! finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
+        while (! finished) 
+        {
+            Instant currentTime = Instant.now();
+            Duration elapsedTime = Duration.between(startTime, currentTime);
+            int elapsedSeconds = (int) elapsedTime.getSeconds();
+            
+            if(elapsedSeconds >= timeLimitSeconds)
+            {
+                System.out.println("Time has run out. Thanks for playing");
+                finished = true;
+            }
+            else
+            {
+                int remainingSeconds = timeLimitSeconds - elapsedSeconds;
+                System.out.println("Time remaining: " + remainingSeconds + " seconds");
+
+                Command command = parser.getCommand();
+                finished = processCommand(command);
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -298,7 +329,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("World of Zuul is a new and lackluster gaming adventure");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
         System.out.println("\nYour command words are:");
@@ -331,7 +362,8 @@ public class Game
 
         CommandWord commandWord = command.getCommandWord();
 
-        switch (commandWord) {
+        switch (commandWord) 
+        {
             case UNKNOWN:
                 System.out.println("I don't know what you mean...");
                 break;
@@ -359,8 +391,6 @@ public class Game
         return wantToQuit;
     }
 
-    // implementations of user commands:
-
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
@@ -380,7 +410,8 @@ public class Game
      */
     private void goRoom(Command command) 
     {
-        if(!command.hasSecondWord()) {
+        if(!command.hasSecondWord()) 
+        {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
@@ -421,7 +452,7 @@ public class Game
     }
     
     /**
-     * Look re=prints the current location of the user
+     * Look reprints the current location of the user
      * and the available exits
      */
     private void look()
